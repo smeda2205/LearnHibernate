@@ -1,5 +1,7 @@
 package com.learn.hibernate.annotations;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,6 +11,9 @@ public class HibernateAnnotationTest {
 		User user = new User();
 		user.setId(1L);
 		user.setName("Srini");
+		user.setJoinDate(new Date());
+		user.setAddress("Addanki");
+		user.setDescription("Sr. Soft Engineer");
 		
 		/**
 		 * Using Hibernate API
