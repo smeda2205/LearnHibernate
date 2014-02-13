@@ -32,7 +32,9 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping resource="com/learn/hibernate/Event.hbm.xml"/>
-
+		
+		<!-- Names the annotated entity classs -->        
+		<mapping class="com.learn.hibernate.annotations.User" /> <!-- Defined the mapping for User through annotations -->
     </session-factory>
 
 </hibernate-configuration>
