@@ -5,36 +5,40 @@
 
 <hibernate-configuration>
 
-    <session-factory>
+	<session-factory>
 
-        <!-- Database connection settings -->
-        <property name='connection.driver_class'>com.mysql.jdbc.Driver</property>
-        <property name='connection.url'>jdbc:mysql://localhost:3306/test</property>
-        <property name='connection.username'>root</property>
-        <property name='connection.password'></property>
+		<!-- Database connection settings -->
+		<property name='connection.driver_class'>com.mysql.jdbc.Driver</property>
+		<property name='connection.url'>jdbc:mysql://localhost:3306/test</property>
+		<property name='connection.username'>root</property>
+		<property name='connection.password'></property>
 
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
 
-        <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <!-- Enable Hibernate's automatic session context management -->
-        <property name="current_session_context_class">thread</property>
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
 
-        <!-- Disable the second-level cache  -->
-        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
 
-        <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
 
-        <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<!-- create : drop and re-create the database schema every time on startup -->
+		<!-- update : it only makes the change if it finds a change. If there is 
+			no change, it will continue to insert the records into the table without 
+			re-creating the schema -->
+		<property name="hbm2ddl.auto">create</property>
 
-        <mapping resource="com/learn/hibernate/Event.hbm.xml"/>
-		
-		<!-- Names the annotated entity classs -->        
+		<mapping resource="com/learn/hibernate/Event.hbm.xml" />
+
+		<!-- Names the annotated entity classs -->
 		<mapping class="com.learn.hibernate.annotations.User" /> <!-- Defined the mapping for User through annotations -->
-    </session-factory>
+	</session-factory>
 
 </hibernate-configuration>

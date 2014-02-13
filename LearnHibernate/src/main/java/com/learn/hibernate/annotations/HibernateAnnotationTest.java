@@ -29,5 +29,6 @@ public class HibernateAnnotationTest {
 		session.save(user);
 		session.getTransaction().commit();
 		
+		sessionFactory.close();
 	}
 }
