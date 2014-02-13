@@ -9,11 +9,24 @@ public class EventManager {
 	public static void main(String[] args) {
 		EventManager mgr = new EventManager();
 
-		//if (args[0].equals("store")) {
+		if (args[0].equals("store")) {
 			mgr.createAndStoreEvent("My Event", new Date());
-		//}
+		} else if (args[0].equals("list")) {
+			List<Event> events = mgr.listEvents();
+			for(Event event: events){
+				System.out.println("Event: " + event.getTitle() + " Time: " + event.getDate());
+			}
+		}
 
 		HibernateUtil.getSessionFactory().close();
+	}
+
+	private List<Event> listEvents() {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		List<Event> result = session.createQuery("from Event").list();
+		session.getTransaction().commit();
+		return result;
 	}
 
 	private void createAndStoreEvent(String title, Date theDate) {
