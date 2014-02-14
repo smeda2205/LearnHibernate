@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.learn.hibernate.mappings.onetoone">
+	<class name="Student" table="STUDENT">
+		<id name="id" column="STUDENT_ID" type="long">
+			<generator class="native" />
+		</id>
+		<property name="name" type="string" not-null="true" length="100"
+			column="STUDENT_NAME" />
+		<many-to-one name="address"
+			class="com.learn.hibernate.mappings.onetoone.Address" column="STUDENT_ADDRESS"
+			not-null="true" cascade="all" unique="true" />
+	</class>
+</hibernate-mapping>

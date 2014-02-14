@@ -39,6 +39,10 @@
 
 		<!-- Names the annotated entity classs -->
 		<mapping class="com.learn.hibernate.annotations.User" /> <!-- Defined the mapping for User through annotations -->
+		
+		<!-- Mappings for one-to-one example -->
+		<mapping resource="com/learn/hibernate/mappings/onetoone/Student.hbm.xml" />
+		<mapping resource="com/learn/hibernate/mappings/onetoone/Address.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
