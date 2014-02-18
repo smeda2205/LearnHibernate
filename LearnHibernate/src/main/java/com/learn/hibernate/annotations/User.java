@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -40,7 +42,7 @@ public class User {
 	// the fields.
 	// with this configuration, it will insert with whatever value the getter
 	// method returns.
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO) //@GeneratedValue is used to tell hibernate to generate a primary or surrogate key
 	@Column(name = "USER_ID")
 	public long getId() {
 		return id;

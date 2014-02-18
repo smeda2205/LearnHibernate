@@ -9,11 +9,17 @@ import org.hibernate.cfg.Configuration;
 public class HibernateAnnotationTest {
 	public static void main(String[] args) {
 		User user = new User();
-		user.setId(1L);
+		//user.setId(1L); // I dont need to pass 'id' attribute as it is primary key and we asked hibernate to generate it.
 		user.setName("Srini");
 		user.setJoinDate(new Date());
 		user.setAddress("Addanki");
 		user.setDescription("Sr. Soft Engineer");
+		
+		User user2 = new User();
+		user2.setName("Balaji");
+		user2.setJoinDate(new Date());
+		user2.setAddress("Addanki");
+		user2.setDescription("Sr. Soft Engineer");
 		
 		/**
 		 * Using Hibernate API
@@ -32,6 +38,7 @@ public class HibernateAnnotationTest {
 		// Step 3:
 		session.beginTransaction();
 		session.save(user);
+		session.save(user2);
 		session.getTransaction().commit();
 		
 		sessionFactory.close();
