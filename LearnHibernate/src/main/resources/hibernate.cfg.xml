@@ -33,12 +33,13 @@
 		<!-- update : it only makes the change if it finds a change. If there is 
 			no change, it will continue to insert the records into the table without 
 			re-creating the schema -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 
 		<mapping resource="com/learn/hibernate/Event.hbm.xml" />
 
 		<!-- Names the annotated entity classs -->
 		<mapping class="com.learn.hibernate.annotations.User" /> <!-- Defined the mapping for User through annotations -->
+		<mapping class="com.learn.hibernate.annotations.embeddingobjects.Person" />
 		
 		<!-- Mappings for one-to-one example -->
 		<mapping resource="com/learn/hibernate/mappings/onetoone/Student.hbm.xml" />
