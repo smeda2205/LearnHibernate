@@ -1,5 +1,7 @@
 package com.learn.hibernate.annotations.embeddingobjects;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,12 +15,17 @@ import javax.persistence.Table;
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "PERSON_ID")
 	private long id;
-	@Column(name = "PERSON_NAME")
 	private String name;
 	@Embedded
-	private Address address;
+	@AttributeOverrides({
+	@AttributeOverride(name = "street", column = @Column(name = "HOME_STREET")),
+	@AttributeOverride(name = "city", column = @Column(name = "HOME_CITY")),
+	@AttributeOverride(name = "state", column = @Column(name = "HOME_STATE")),
+	@AttributeOverride(name = "pincode", column = @Column(name = "HOME_PINCODE"))})
+	private Address homeAddress;
+	@Embedded
+	private Address officeAddress;
 
 	public long getId() {
 		return id;
@@ -26,6 +33,14 @@ public class Person {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Address getOfficeAddress() {
+		return officeAddress;
+	}
+
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
 	}
 
 	public String getName() {
@@ -36,11 +51,11 @@ public class Person {
 		this.name = name;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Address getHomeAddress() {
+		return homeAddress;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
 	}
 }

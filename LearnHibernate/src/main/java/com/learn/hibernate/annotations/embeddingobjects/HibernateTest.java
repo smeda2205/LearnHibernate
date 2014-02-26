@@ -15,7 +15,8 @@ public class HibernateTest {
 		address1.setState("State1");
 		address1.setPincode("Pincode1");
 		
-		person.setAddress(address1);
+		person.setHomeAddress(address1);
+		person.setOfficeAddress(address1);
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
